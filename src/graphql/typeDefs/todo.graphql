@@ -41,13 +41,13 @@ mutation AddTodo($title: String!) {
   }
 }
 
-mutation updateTodo($todoId: String!, $completed: Boolean, $title: String) {
+mutation UpdateTodo($todoId: String!, $completed: Boolean, $title: String) {
   updateTodo(todoId: $todoId, completed: $completed, title: $title) {
     ...TodoFragment
   }
 }
 
-mutation deleteTodo($todoId: String!) {
+mutation DeleteTodo($todoId: String!) {
   deleteTodo(todoId: $todoId) {
     ...TodoFragment
   }

@@ -6,17 +6,15 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  DateTime: { input: string; output: string; }
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+  DateTime: string;
 };
 
 export type Mutation = {
@@ -28,19 +26,19 @@ export type Mutation = {
 
 
 export type MutationAddTodoArgs = {
-  title: Scalars['String']['input'];
+  title: Scalars['String'];
 };
 
 
 export type MutationDeleteTodoArgs = {
-  todoId: Scalars['String']['input'];
+  todoId: Scalars['String'];
 };
 
 
 export type MutationUpdateTodoArgs = {
-  completed?: InputMaybe<Scalars['Boolean']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  todoId: Scalars['String']['input'];
+  completed?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  todoId: Scalars['String'];
 };
 
 export type Query = {
@@ -50,20 +48,20 @@ export type Query = {
 
 export type Todo = {
   __typename?: 'Todo';
-  completed: Scalars['Boolean']['output'];
-  createdAt: Scalars['DateTime']['output'];
-  id: Scalars['ID']['output'];
-  title: Scalars['String']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  completed: Scalars['Boolean'];
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
   user: User;
-  userId: Scalars['String']['output'];
+  userId: Scalars['String'];
 };
 
 export type User = {
   __typename?: 'User';
-  email?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['ID']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 
@@ -133,28 +131,26 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
-
-
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
-  DateTime: ResolverTypeWrapper<Scalars['DateTime']['output']>;
-  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars['String']['output']>;
+  String: ResolverTypeWrapper<Scalars['String']>;
   Todo: ResolverTypeWrapper<TodoModel>;
   User: ResolverTypeWrapper<UserModel>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Boolean: Scalars['Boolean']['output'];
-  DateTime: Scalars['DateTime']['output'];
-  ID: Scalars['ID']['output'];
+  Boolean: Scalars['Boolean'];
+  DateTime: Scalars['DateTime'];
+  ID: Scalars['ID'];
   Mutation: {};
   Query: {};
-  String: Scalars['String']['output'];
+  String: Scalars['String'];
   Todo: TodoModel;
   User: UserModel;
 };

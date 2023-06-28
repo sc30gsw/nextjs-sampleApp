@@ -5,17 +5,15 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  DateTime: { input: string; output: string; }
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+  DateTime: string;
 };
 
 export type Mutation = {
@@ -27,19 +25,19 @@ export type Mutation = {
 
 
 export type MutationAddTodoArgs = {
-  title: Scalars['String']['input'];
+  title: Scalars['String'];
 };
 
 
 export type MutationDeleteTodoArgs = {
-  todoId: Scalars['String']['input'];
+  todoId: Scalars['String'];
 };
 
 
 export type MutationUpdateTodoArgs = {
-  completed?: InputMaybe<Scalars['Boolean']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  todoId: Scalars['String']['input'];
+  completed?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  todoId: Scalars['String'];
 };
 
 export type Query = {
@@ -49,20 +47,20 @@ export type Query = {
 
 export type Todo = {
   __typename?: 'Todo';
-  completed: Scalars['Boolean']['output'];
-  createdAt: Scalars['DateTime']['output'];
-  id: Scalars['ID']['output'];
-  title: Scalars['String']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  completed: Scalars['Boolean'];
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
   user: User;
-  userId: Scalars['String']['output'];
+  userId: Scalars['String'];
 };
 
 export type User = {
   __typename?: 'User';
-  email?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['ID']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type TodoFragmentFragment = { __typename?: 'Todo', id: string, title: string, completed: boolean, createdAt: string, updatedAt: string, user: { __typename?: 'User', id?: string | null, name?: string | null, email?: string | null } };
@@ -73,23 +71,23 @@ export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
 export type TodosQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string, title: string, completed: boolean, createdAt: string, updatedAt: string, user: { __typename?: 'User', id?: string | null, name?: string | null, email?: string | null } }> };
 
 export type AddTodoMutationVariables = Exact<{
-  title: Scalars['String']['input'];
+  title: Scalars['String'];
 }>;
 
 
 export type AddTodoMutation = { __typename?: 'Mutation', addTodo: { __typename?: 'Todo', id: string, title: string, completed: boolean, createdAt: string, updatedAt: string, user: { __typename?: 'User', id?: string | null, name?: string | null, email?: string | null } } };
 
 export type UpdateTodoMutationVariables = Exact<{
-  todoId: Scalars['String']['input'];
-  completed?: InputMaybe<Scalars['Boolean']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  todoId: Scalars['String'];
+  completed?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
 }>;
 
 
 export type UpdateTodoMutation = { __typename?: 'Mutation', updateTodo: { __typename?: 'Todo', id: string, title: string, completed: boolean, createdAt: string, updatedAt: string, user: { __typename?: 'User', id?: string | null, name?: string | null, email?: string | null } } };
 
 export type DeleteTodoMutationVariables = Exact<{
-  todoId: Scalars['String']['input'];
+  todoId: Scalars['String'];
 }>;
 
 
@@ -184,7 +182,7 @@ export type AddTodoMutationHookResult = ReturnType<typeof useAddTodoMutation>;
 export type AddTodoMutationResult = Apollo.MutationResult<AddTodoMutation>;
 export type AddTodoMutationOptions = Apollo.BaseMutationOptions<AddTodoMutation, AddTodoMutationVariables>;
 export const UpdateTodoDocument = gql`
-    mutation updateTodo($todoId: String!, $completed: Boolean, $title: String) {
+    mutation UpdateTodo($todoId: String!, $completed: Boolean, $title: String) {
   updateTodo(todoId: $todoId, completed: $completed, title: $title) {
     ...TodoFragment
   }
@@ -219,7 +217,7 @@ export type UpdateTodoMutationHookResult = ReturnType<typeof useUpdateTodoMutati
 export type UpdateTodoMutationResult = Apollo.MutationResult<UpdateTodoMutation>;
 export type UpdateTodoMutationOptions = Apollo.BaseMutationOptions<UpdateTodoMutation, UpdateTodoMutationVariables>;
 export const DeleteTodoDocument = gql`
-    mutation deleteTodo($todoId: String!) {
+    mutation DeleteTodo($todoId: String!) {
   deleteTodo(todoId: $todoId) {
     ...TodoFragment
   }
