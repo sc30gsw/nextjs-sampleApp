@@ -38,5 +38,4 @@ next-env.d.ts
 node_modules
 .next
 public
-yarn.lock
 .env
