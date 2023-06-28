@@ -13,7 +13,7 @@ generates:
     config:
       contextType: 'src/graphql/context#Context'
       mapperTypeSuffix: Model
-      mapper:
+      mappers:
         User: '@prisma/client#User'
         Todo: '@prisma/client#Todo'
       scalars:
