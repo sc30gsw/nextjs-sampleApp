@@ -13,7 +13,7 @@
     "format:eslint": "yarn lint:eslint --fix",
     "format:prettier": "yarn lint:prettier --write",
     "typecheck": "tsc",
-    "codegen": "graphql-codegen",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@apollo/client": "3.7.4",
