@@ -16,6 +16,7 @@
     "codegen": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.16",
     "@auth/prisma-adapter": "^1.0.0",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
